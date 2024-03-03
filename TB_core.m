@@ -2,7 +2,7 @@
 tic
 format long
 
-% Physical constants and initial parameters under modern climate
+% Physical constants and parameters under modern climate
 rho0 = 1027; % Reference density (kg/m^3)
 S0 = 35; % Reference salinity (psu)
 cp = 4000 * rho0; % (J/m^3/K)
@@ -10,7 +10,7 @@ betat = 1.8 * 10^(-4); betatL = 1.8 * 10^(-4); betatH = 1 * 10^(-4); % Thermal e
 betas = 7.6 * 10^(-4); % Saline expansion coefficient (psu^-1)
 qe = 16 * 10^6; % Mean state AMOC across OSNAP section under modern climate (m^3/s)
 ht = 0.37 * 10^15; % Mean state AMOC-related heat transport across OSNAP section under modern climate (W)
-Hse = 7.5 * 10^6; % % Mean state AMOC-related salt transport across OSNAP section under modern climate Hse = S0 * Fe (psu*m^3/s)
+Hse = 7.5 * 10^6; % % Mean state AMOC-related salt transport across OSNAP section under modern climate (psu*m^3/s)
 dTe = ht / (cp * qe); % (K or ^oC)
 dSe = Hse / qe; % from equilibrium (psu)
 V1e = 3.2 * 10^16; % Low latitude box volume (m^3)
@@ -55,7 +55,7 @@ S1d = zeros(T / dt, 4); S2d = zeros(T / dt, 4);
 % You can change the parameters in this part
 delayL = 5; % Advective delay from low latitude to OSNAP section (year)
 delayH = 20; % Advective delay from high latitude to OSNAP section (year)
-delayC = 5; % Coupled time delay F'=c*q'(t-tauc) (year)
+delayC = 5; % Coupled time delay (year)
 c = 0.005; % Coupled feedback strength
 a = 1.4 * 10^(-7); % Damping coefficient ((m^3/kg)^2*s-1)
 
@@ -143,7 +143,7 @@ plot(0:dt:T, q / 10^6, 'LineWidth', 1);
 grid on;
 ylabel('AMOC Strength (Sv)');
 xlabel('Time (years)');
-title('AMOC Oscillation Over Time');
+title('AMOC Timeseries');
 
 % Save the results. The results can be used as the initial condition at your next run.
 % ocn_ctrl.q=q; ocn_ctrl.T1=T1; ocn_ctrl.T2=T2; ocn_ctrl.S2=S2; ocn_ctrl.S1=S1;
